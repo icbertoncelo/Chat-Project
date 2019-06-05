@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { Creators as RegisterActions } from '../../store/ducks/register';
+import { Creators as RegisterActions } from '~/store/ducks/register';
 
 import { Container, Actions, Back } from './styles';
 
@@ -48,12 +48,7 @@ class Register extends Component {
             value={username}
             onChange={this.handleInputChange}
           />
-          <input
-            placeholder="email"
-            name="email"
-            value={email}
-            onChange={this.handleInputChange}
-          />
+          <input placeholder="email" name="email" value={email} onChange={this.handleInputChange} />
           <input
             placeholder="password"
             name="password"

@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { Creators as LoginActions } from '../../store/ducks/login';
+import { Creators as LoginActions } from '~/store/ducks/login';
 
 import { Container } from './styles';
 
