@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { Creators as LoginActions } from '~/store/ducks/login';
+import { Creators as AuthActions } from '~/store/ducks/auth';
 
 import { Container } from './styles';
 
@@ -63,10 +63,10 @@ class Login extends Component {
 }
 
 const mapStateToProps = state => ({
-  login: state.login,
+  auth: state.auth,
 });
 
-const mapDispatchToProps = dispatch => bindActionCreators(LoginActions, dispatch);
+const mapDispatchToProps = dispatch => bindActionCreators(AuthActions, dispatch);
 
 export default connect(
   mapStateToProps,

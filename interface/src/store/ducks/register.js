@@ -1,6 +1,6 @@
 export const Types = {
-  ADD_REQUEST: 'register/ADD_REQUEST',
-  ADD_SUCCESS: 'register/ADD_SUCCESS',
+  REGISTER_REQUEST: 'register/REGISTER_REQUEST',
+  REGISTER_SUCCESS: 'register/REGISTER_SUCCESS',
 };
 
 const INITIAL_STATE = {
@@ -10,9 +10,9 @@ const INITIAL_STATE = {
 
 export default function playlists(state = INITIAL_STATE, action) {
   switch (action.type) {
-    case Types.ADD_REQUEST:
+    case Types.REGISTER_REQUEST:
       return { ...state, loading: true };
-    case Types.ADD_SUCCESS:
+    case Types.REGISTER_SUCCESS:
       return { ...state, loading: false, data: action.payload.data };
     default:
       return state;
@@ -21,11 +21,11 @@ export default function playlists(state = INITIAL_STATE, action) {
 
 export const Creators = {
   registerRequest: data => ({
-    type: Types.ADD_REQUEST,
+    type: Types.REGISTER_REQUEST,
     payload: { data },
   }),
   registerSuccess: data => ({
-    type: Types.ADD_SUCCESS,
+    type: Types.REGISTER_SUCCESS,
     payload: { data },
   }),
 };

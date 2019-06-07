@@ -7,7 +7,11 @@ import store from '../store';
 const PrivateRoute = ({ component: Component, ...rest }) => (
   <Route
     {...rest}
-    render={props => (store.getState().login.signedIn ? <Component {...props} /> : <Redirect to="/" />)
+    render={props => (store.getState().auth.signedIn ? (
+      <Component {...props} />
+    ) : (
+      <Redirect to={{ pathname: '/', state: { from: props.location } }} />
+    ))
     }
   />
 );

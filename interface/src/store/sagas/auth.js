@@ -2,7 +2,7 @@ import { push } from 'connected-react-router';
 import { call, put } from 'redux-saga/effects';
 import api from '../../services/api';
 
-import { Creators as LoginActions } from '../ducks/login';
+import { Creators as AuthActions } from '../ducks/auth';
 
 export function* signIn({ payload }) {
   try {
@@ -10,7 +10,7 @@ export function* signIn({ payload }) {
 
     localStorage.setItem('@Chat:token', response.data.token);
 
-    yield put(LoginActions.loginSuccess(response.data));
+    yield put(AuthActions.loginSuccess(response.data));
     yield put(push('/chat'));
   } catch (err) {
     console.log(err);
