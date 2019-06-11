@@ -9,6 +9,31 @@ export const Container = styled.div`
   height: 94%;
   border-radius: 5px;
   overflow: auto;
+
+  > div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px;
+
+    strong {
+      font-size: 16px;
+      color: #666666;
+    }
+
+    button {
+      padding: 5px;
+      border: 0;
+      border-radius: 4px;
+      color: #fff;
+      background: #e00d00;
+      font-weight: bold;
+
+      &:hover {
+        opacity: 0.7;
+      }
+    }
+  }
 `;
 
 export const User = styled.div`
@@ -22,15 +47,18 @@ export const User = styled.div`
     height: 45px;
     border-radius: 50%;
   }
+
   div {
     margin-left: 10px;
     display: flex;
     flex-direction: column;
     width: 65%;
+
     strong {
       font-size: 16px;
       color: #666666;
     }
+
     span {
       font-size: 14px;
       color: #999999;

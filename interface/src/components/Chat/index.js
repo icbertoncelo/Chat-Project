@@ -12,11 +12,26 @@ import {
 class Chat extends Component {
   static propTypes = {
     addMessage: PropTypes.func.isRequired,
+    loadMessageRequest: PropTypes.func.isRequired,
+    message: PropTypes.shape({
+      data: PropTypes.arrayOf(
+        PropTypes.shape({
+          _id: PropTypes.number,
+          message: PropTypes.string,
+        }),
+      ),
+    }).isRequired,
   };
 
   state = {
     message: '',
   };
+
+  componentDidMount() {
+    const { loadMessageRequest } = this.props;
+
+    loadMessageRequest();
+  }
 
   handleInputChange = (e) => {
     this.setState({ [e.target.name]: e.target.value });
@@ -41,9 +56,9 @@ class Chat extends Component {
     return (
       <Container>
         <ChatScreen>
-          {allMessages.data.map((msg, index) => (
-            <Message key={index}>
-              <p>{msg}</p>
+          {allMessages.data.map(msgObject => (
+            <Message key={msgObject._id}>
+              <p>{msgObject.message}</p>
             </Message>
           ))}
         </ChatScreen>

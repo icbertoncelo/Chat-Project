@@ -9,9 +9,13 @@ import { Container, User } from './styles';
 
 const UserList = ({ logOut }) => (
   <Container>
-    <button type="button" onClick={logOut}>
-      Sair
-    </button>
+    <div>
+      <div />
+      <strong>Users</strong>
+      <button type="button" onClick={logOut}>
+        Sair
+      </button>
+    </div>
     <ul>
       <li>
         <User>

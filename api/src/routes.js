@@ -19,7 +19,7 @@ routes.post(
   handle(controllers.SessionController.store)
 )
 
-routes.use(authMiddleware)
+// routes.use(authMiddleware)
 
 /* Message */
 routes.get('/messages', handle(controllers.MessageController.index))
