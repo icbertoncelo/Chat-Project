@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import io from 'socket.io-client';
 
+import { distanceInWordsToNow } from 'date-fns';
+import pt from 'date-fns/locale/pt';
+
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { Creators as MessageActions } from '~/store/ducks/message';
@@ -71,8 +74,8 @@ class Chat extends Component {
               <img src="http://clipart-library.com/img/1745489.png" alt="user" />
               <div>
                 <div>
-                  <strong>Ian Carlos</strong>
-                  <span>Ontem às 22:50</span>
+                  <strong>{msgObject.author.username}</strong>
+                  <span>Há {distanceInWordsToNow(msgObject.createdAt, { locale: pt })}</span>
                 </div>
 
                 <p>{msgObject.message}</p>
