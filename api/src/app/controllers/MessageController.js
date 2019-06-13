@@ -2,7 +2,7 @@ const Message = require('../models/Message')
 
 class MessageController {
   async index (req, res) {
-    const msg = await Message.find()
+    const msg = await Message.find().populate('author')
     return res.json(msg)
   }
 
@@ -14,10 +14,12 @@ class MessageController {
 
   async store (req, res) {
     try {
-      const msg = await Message.create({
+      let msg = await Message.create({
         ...req.body,
-        author: '5cf5ba08770bc041b0ea3bc2'
+        author: '5cf68955383915287c17b706'
       })
+
+      msg = await msg.populate('author').execPopulate()
 
       req.io.emit('message', msg)
       return res.json(msg)
