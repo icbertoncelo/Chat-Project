@@ -19,6 +19,7 @@ class MessageController {
         author: '5cf5ba08770bc041b0ea3bc2'
       })
 
+      req.io.emit('message', msg)
       return res.json(msg)
     } catch (err) {
       res.send(err)

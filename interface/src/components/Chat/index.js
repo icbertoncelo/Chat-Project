@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import io from 'socket.io-client';
 
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -28,10 +29,19 @@ class Chat extends Component {
   };
 
   componentDidMount() {
+    this.registerToSocket();
     const { loadMessageRequest } = this.props;
 
     loadMessageRequest();
   }
+
+  registerToSocket = () => {
+    const socket = io('http://localhost:5000');
+
+    socket.on('message', (newMessage) => {
+      this.props.socketMessage(newMessage);
+    });
+  };
 
   handleInputChange = (e) => {
     this.setState({ [e.target.name]: e.target.value });

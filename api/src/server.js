@@ -12,6 +12,9 @@ class App {
     this.express = express()
     this.isDev = process.env.NODE_ENV !== 'production'
 
+    this.server = require('http').Server(this.express)
+    this.io = require('socket.io')(this.server)
+
     this.database()
     this.middlewares()
     this.routes()
@@ -29,6 +32,12 @@ class App {
   middlewares () {
     this.express.use(cors())
     this.express.use(express.json())
+
+    this.express.use((req, res, next) => {
+      req.io = this.io
+
+      next()
+    })
   }
 
   routes () {
@@ -54,4 +63,4 @@ class App {
   }
 }
 
-module.exports = new App().express
+module.exports = new App().server
