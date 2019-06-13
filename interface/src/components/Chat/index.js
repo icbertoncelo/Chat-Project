@@ -16,7 +16,7 @@ class Chat extends Component {
     message: PropTypes.shape({
       data: PropTypes.arrayOf(
         PropTypes.shape({
-          _id: PropTypes.number,
+          _id: PropTypes.string,
           message: PropTypes.string,
         }),
       ),
@@ -58,7 +58,15 @@ class Chat extends Component {
         <ChatScreen>
           {allMessages.data.map(msgObject => (
             <Message key={msgObject._id}>
-              <p>{msgObject.message}</p>
+              <img src="http://clipart-library.com/img/1745489.png" alt="user" />
+              <div>
+                <div>
+                  <strong>Ian Carlos</strong>
+                  <span>Ontem às 22:50</span>
+                </div>
+
+                <p>{msgObject.message}</p>
+              </div>
             </Message>
           ))}
         </ChatScreen>
@@ -71,7 +79,7 @@ class Chat extends Component {
             onChange={this.handleInputChange}
           />
           <button type="button" onClick={this.onSubmit}>
-            Enviar
+            Send
           </button>
         </TextArea>
       </Container>

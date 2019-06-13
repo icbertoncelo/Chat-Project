@@ -20,21 +20,42 @@ export const ChatScreen = styled.div`
   background: transparent;
   border-radius: 5px;
   overflow: auto;
+  padding: 10px;
 `;
 
 export const Message = styled.div`
   width: 100%;
-  height: 40px;
   margin-bottom: 10px;
-  background: #736d94;
-  border-radius: 5px;
-  padding: 0 10px;
+  border-bottom: 1px solid #ccc;
+  padding: 10px;
   display: flex;
-  align-items: center;
+  white-space: pre-wrap;
 
-  p {
-    font-size: 16px;
-    color: #fff;
+  img {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    margin-right: 15px;
+  }
+
+  div {
+    div {
+      strong {
+        color: #251f47;
+        margin-right: 5px;
+      }
+
+      span {
+        color: #666;
+        font-size: 10px;
+      }
+    }
+
+    p {
+      font-size: 16px;
+      color: #666;
+      margin-top: 10px;
+    }
   }
 `;
 
