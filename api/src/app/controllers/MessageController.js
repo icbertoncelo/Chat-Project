@@ -16,12 +16,13 @@ class MessageController {
     try {
       let msg = await Message.create({
         ...req.body,
-        author: '5cf68955383915287c17b706'
+        author: req.userId
       })
 
       msg = await msg.populate('author').execPopulate()
 
       req.io.emit('message', msg)
+
       return res.json(msg)
     } catch (err) {
       res.send(err)
